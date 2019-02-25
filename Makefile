@@ -19,6 +19,7 @@ SLIB=libdarknet.so
 ALIB=libdarknet.a
 EXEC=darknet
 OBJDIR=./obj/
+INSTALL_PATH=/usr/local/darknet
 
 CC=gcc
 CPP=g++
@@ -78,6 +79,12 @@ DEPS = $(wildcard src/*.h) Makefile include/darknet.h
 all: obj backup results $(SLIB) $(ALIB) $(EXEC)
 #all: obj  results $(SLIB) $(ALIB) $(EXEC)
 
+install: all
+	mkdir $(INSTALL_PATH)
+	cp $(SLIB) $(ALIB) $(INSTALL_PATH)
+
+uninstall: clean
+	rm -rf $(INSTALL_PATH)
 
 $(EXEC): $(EXECOBJ) $(ALIB)
 	$(CC) $(COMMON) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(ALIB)
