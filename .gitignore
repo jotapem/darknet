@@ -25,3 +25,7 @@ ehthumbs.db
 Icon?
 Thumbs.db
 *.swp
+
+# build output
+libdarknet.a
+libdarknet.so
